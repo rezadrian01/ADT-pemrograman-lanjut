@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <assert.h>
 #include "titik.h"
 
 void testTitik()
@@ -7,18 +8,26 @@ void testTitik()
     buatTitik(&t1, 3, 4);
     buatTitik(&t2, 6, 8);
 
-    tampilkanTitik(&t1);
-    tampilkanTitik(&t2);
+    printTitik(&t1);
+    printTitik(&t2);
 
-    printf("Jarak antara t1 dan t2: %d\n", hitungJarak(&t1, &t2));
+    assert(t1.x == 3 && t1.y == 4);
+    assert(t2.x == 6 && t2.y == 8);
 
-    geserTitik(&t1, 2, 2);
-    printf("Setelah t1 digeser: ");
-    tampilkanTitik(&t1);
+    int jarak = hitungJarak(&t1, &t2);
+    printf("Jarak yang dihitung: %d\n", jarak);
+    assert(jarak == 5);
 
-    printf("Apakah t1 dan t2 sama? %s\n", isTitikSama(&t1, &t2) ? "Ya" : "Tidak");
+    assert(!isTitikSama(&t1, &t2));
 
-    reflectTitik(&t1);
-    printf("Setelah t1 direfleksi: ");
-    tampilkanTitik(&t1);
+    geserTitik(&t1, 1, 1);
+    assert(t1.x == 4 && t1.y == 5);
+    (4, 5)
+}
+
+int main()
+{
+    testTitik();
+    printf("Semua tes berhasil!\n");
+    return 0;
 }

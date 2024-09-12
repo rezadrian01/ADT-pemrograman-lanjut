@@ -1,5 +1,5 @@
+#include <math.h>
 #include <stdio.h>
-#include <stdlib.h>
 #include "titik.h"
 
 void buatTitik(Titik *t, int x, int y)
@@ -8,29 +8,23 @@ void buatTitik(Titik *t, int x, int y)
     t->y = y;
 }
 
-void geserTitik(Titik *t, int dx, int dy)
-{
-    t->x += dx;
-    t->y += dy;
-}
-
 int hitungJarak(const Titik *t1, const Titik *t2)
 {
-    return abs(t1->x - t2->x) + abs(t1->y - t2->y);
-}
-
-void tampilkanTitik(const Titik *t)
-{
-    printf("Titik(%d, %d)\n", t->x, t->y);
+    return (int)round(sqrt(pow(t2->x - t1->x, 2) + pow(t2->y - t1->y, 2)));
 }
 
 int isTitikSama(const Titik *t1, const Titik *t2)
 {
-    return t1->x == t2->x && t1->y == t2->y;
+    return (t1->x == t2->x && t1->y == t2->y);
 }
 
-void reflectTitik(Titik *t)
+void printTitik(const Titik *t)
 {
-    t->x = -t->x;
-    t->y = -t->y;
+    printf("Titik: (%d, %d)\n", t->x, t->y);
+}
+
+void geserTitik(Titik *t, int dx, int dy)
+{
+    t->x += dx;
+    t->y += dy;
 }

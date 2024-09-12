@@ -1,25 +1,26 @@
 #include <stdio.h>
+#include <assert.h>
 #include "lingkaran.h"
 
-void testLingkaran()
+int main()
 {
-    Lingkaran l1, l2;
+    Lingkaran l1;
     buatLingkaran(&l1, 2, 3, 5);
+    Lingkaran l2;
     buatLingkaran(&l2, 2, 3, 10);
 
     tampilkanLingkaran(&l1);
     tampilkanLingkaran(&l2);
 
-    printf("Luas lingkaran l1: %.2f\n", hitungLuas(&l1));
-    printf("Keliling lingkaran l1: %.2f\n", hitungKeliling(&l1));
+    float luas1 = hitungLuas(&l1);
+    printf("Luas lingkaran l1: %.2f\n", luas1);
+    assert(luas1 - 78.54 < 0.01);
 
-    geserLingkaran(&l1, 3, 4);
-    printf("Setelah l1 digeser: ");
-    tampilkanLingkaran(&l1);
+    float keliling1 = hitungKeliling(&l1);
+    printf("Keliling lingkaran l1: %.2f\n", keliling1);
+    assert(keliling1 - 31.42 < 0.01);
 
-    printf("Apakah l1 dan l2 sama? %s\n", isLingkaranSama(&l1, &l2) ? "Ya" : "Tidak");
+    assert(isLingkaranSama(&l1, &l2) == 0);
 
-    perbesarLingkaran(&l1, 2);
-    printf("Setelah l1 diperbesar: ");
-    tampilkanLingkaran(&l1);
+    return 0;
 }

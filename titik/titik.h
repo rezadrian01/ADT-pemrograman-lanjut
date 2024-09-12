@@ -3,14 +3,14 @@
 
 typedef struct
 {
-    int x, y;
+    int x;
+    int y;
 } Titik;
 
 void buatTitik(Titik *t, int x, int y);
-void geserTitik(Titik *t, int dx, int dy);
 int hitungJarak(const Titik *t1, const Titik *t2);
-void tampilkanTitik(const Titik *t);
 int isTitikSama(const Titik *t1, const Titik *t2);
-void reflectTitik(Titik *t);
+void printTitik(const Titik *t);
+void geserTitik(Titik *t, int dx, int dy);
 
 #endif
